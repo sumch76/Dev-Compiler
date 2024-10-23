@@ -43,7 +43,7 @@ function App() {
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <Header />
         <AllRoutes />
-      </ThemeProvider>
+      </ThemeProvider> 
     </>
   );
 }

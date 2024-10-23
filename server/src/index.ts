@@ -5,17 +5,18 @@ import { dbConnect } from "./lib/dbConnect";
 import { compilerRouter } from "./routes/compilerRouter";
 import { userRouter } from "./routes/userRouter";
 import cookieParser from "cookie-parser";
+
+config();
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    credentials: true,
     origin: [process.env.CLIENT_URL!],
+    credentials: true,
   })
 );
-config();
 
 app.use("/compiler", compilerRouter);
 app.use("/user", userRouter);
