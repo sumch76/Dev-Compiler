@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface appSliceState {
+  currentWidth: any;
   currentUser: {
     username?: string;
     picture?: string;
@@ -15,6 +16,7 @@ const initialState: appSliceState = {
   currentUser: {},
   isLoggedIn: false,
   windowWidth: window.innerWidth,
+  currentWidth: undefined
 };
 
 const appSlice = createSlice({
