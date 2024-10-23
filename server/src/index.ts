@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL!],
-    methods:['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
+    origin: ["http://localhost:5173",process.env.CLIENT_URL!],
+    methods:['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   })
 );
-app.options('*',cors());
+//app.options('*',cors());
 app.use("/compiler", compilerRouter);
 app.use("/user", userRouter);
 
