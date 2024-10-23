@@ -6,7 +6,7 @@ import { compilerRouter } from "./routes/compilerRouter";
 import { userRouter } from "./routes/userRouter";
 import cookieParser from "cookie-parser";
 
-config();
+
 const app = express();
 
 app.use(express.json());
@@ -17,7 +17,7 @@ app.use(
     credentials: true,
   })
 );
-
+config();
 app.use("/compiler", compilerRouter);
 app.use("/user", userRouter);
 
