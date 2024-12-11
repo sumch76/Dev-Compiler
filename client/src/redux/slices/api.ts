@@ -10,8 +10,17 @@ import {
 export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://dev-compiler.onrender.com",
+    prepareHeaders: (headers, { getState }) => {
+      const state = getState() as { auth: { token: string } };
+      const token = state.auth.token;
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
     credentials: "include",
   }),
+
   tagTypes: ["myCodes", "allCodes"],
   endpoints: (builder) => ({
     saveCode: builder.mutation<{ url: string; status: string }, codeType>({
