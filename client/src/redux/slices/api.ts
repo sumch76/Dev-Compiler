@@ -9,8 +9,7 @@ import {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    // baseUrl: "https://dev-compiler.onrender.com",
-    baseUrl: "https://localhost:4000",
+    baseUrl: "https://dev-compiler.onrender.com",
     credentials: "include",
   }),
   tagTypes: ["myCodes", "allCodes"],
