@@ -3,7 +3,9 @@ import { useGetMyCodesQuery } from "@/redux/slices/api";
 import { Link } from "react-router-dom";
 
 export default function MyCodes() {
-  const { data: myCodes } = useGetMyCodesQuery();
+  const { data: myCodes,isError,isLoading } = useGetMyCodesQuery();
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error loading your codes. Please try again.</p>;
 
   return myCodes?.length !== 0 ? (
     <div className="p-3 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">

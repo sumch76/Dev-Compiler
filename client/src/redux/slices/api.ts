@@ -11,8 +11,8 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://dev-compiler.onrender.com",
     prepareHeaders: (headers, { getState }) => {
-      const state = getState() as { auth: { token: string } };
-      const token = state.auth?.token;
+      const state = getState() as { appSlice: { currentUser: { token?: string } } };
+      const token = state.appSlice.currentUser.token;
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
