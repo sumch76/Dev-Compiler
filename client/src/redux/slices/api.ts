@@ -12,7 +12,7 @@ export const api = createApi({
     baseUrl: "https://dev-compiler.onrender.com",
     prepareHeaders: (headers, { getState }) => {
       const state = getState() as { auth: { token: string } };
-      const token = state.auth.token;
+      const token = state.auth?.token;
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
