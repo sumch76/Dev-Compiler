@@ -23,12 +23,18 @@ export default function CodeEditor() {
     [dispatch]
   );
 
+  const langMap: Record<string, string> = {
+    html: "html",
+    css: "css",
+    javascript: "javascript",
+  };
+
   return (
     <CodeMirror
       value={fullCode[currentLanguage]}
       height="calc(100vh - 60px - 50px)"
       className="code-editor [&>.cm-editor]:text-[10px] [&>.cm-editor]:md:text-[13px]"
-      extensions={[loadLanguage(currentLanguage)!]}
+      extensions={[loadLanguage(langMap[currentLanguage] as any)!]}
       onChange={onChange}
       theme={draculaInit({
         settings: {
