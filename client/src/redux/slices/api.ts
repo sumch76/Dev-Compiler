@@ -9,7 +9,7 @@ import {
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://dev-compiler.onrender.com",
+    baseUrl: import.meta.env.VITE_SERVER_URL ?? "http://localhost:4000",
     credentials: "include",
   }),
 

@@ -14,15 +14,20 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:5173",process.env.CLIENT_URL!],
-    methods:['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    origin: ["http://localhost:5173", process.env.CLIENT_URL!],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   })
 );
 //app.options('*',cors());
 app.use("/compiler", compilerRouter);
 app.use("/user", userRouter);
 
+export default app;
+
 dbConnect();
-app.listen(4000, () => {
-  console.log("http://localhost:4000");
-});
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(4000, () => {
+    console.log("http://localhost:4000");
+  });
+}
