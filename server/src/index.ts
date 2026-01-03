@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.CLIENT_URL || "http://localhost:5173", "https://dev-compiler-git-main-sumit-chaubeys-projects.vercel.app"],
+    origin: [process.env.CLIENT_URL || "http://localhost:5173", "https://dev-compiler-git-main-sumit-chaubeys-projects.vercel.app", "https://dev-compiler.vercel.app"],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
   })
