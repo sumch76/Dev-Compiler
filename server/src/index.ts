@@ -14,20 +14,24 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:5173", process.env.CLIENT_URL!],
+    origin: [process.env.CLIENT_URL || "http://localhost:5173", "https://dev-compiler-git-main-sumit-chaubeys-projects.vercel.app"],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
   })
 );
-//app.options('*',cors());
+
 app.use("/compiler", compilerRouter);
 app.use("/user", userRouter);
 
-export default app;
-
 dbConnect();
 
-if (process.env.NODE_ENV !== "production") {
-  app.listen(4000, () => {
-    console.log("http://localhost:4000");
+// Only listen if we are NOT in a Serverless environment
+// Vercel sets VERCEL=1
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 4000;
+  app.listen(PORT, () => {
+    console.log(`http://localhost:${PORT}`);
   });
 }
+
+export default app;
