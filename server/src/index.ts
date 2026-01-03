@@ -22,6 +22,9 @@ app.use(
 
 app.use("/compiler", compilerRouter);
 app.use("/user", userRouter);
+app.get("/", (req, res) => {
+  return res.status(200).send("OK");
+});
 
 dbConnect();
 
